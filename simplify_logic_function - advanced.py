@@ -11,7 +11,7 @@ class List():
         self.component = []
         self.ones = 0
         self.flag = 0
-        self.binary = [0,0,0,0,0,0,0]
+        self.binary = [0,0,0,0,0,0,0,0]
 
 class Decimal():
     def __init__(self):
@@ -26,14 +26,14 @@ def expand_list(list1,comp1):
         comp1[comp1.index(2)] = 0
         comp2[comp2.index(2)] = 1
         list1.append(comp2)
-    if 2 in comp1:
+    # if 2 in comp1:
         expand_list(list1, comp1)
         expand_list(list1, comp2)
 
 def compare_binary(comp1,comp2):
     unmatch = 0
     tmp = comp1[:]
-    for i in range(7):
+    for i in range(8):
         if comp1[i]!=comp2[i]:
             tmp[i] = 2
             unmatch+=1
@@ -96,14 +96,14 @@ def get_index(lst,item):
     return [index for (index,value) in enumerate(lst) if value == item]
 
 def print_result(result,max_bit):
-    out_dict1 = {1:"A",2:"B",3:"C",4:"D",5:"E",6:"F",7:"G"}
-    out_dict2 = {1:"A'",2:"B'",3:"C'",4:"D'",5:"E'",6:"F'",7:"G'"}
+    out_dict1 = {1:"A",2:"B",3:"C",4:"D",5:"E",6:"F",7:"G",8:"H"}
+    out_dict2 = {1:"A'",2:"B'",3:"C'",4:"D'",5:"E'",6:"F'",7:"G'",8:"H'"}
     to_print = 'Y = '
     for i in range(len(result)):
         for j in range(max_bit):
-            if result[i][7-max_bit+j]==1:
+            if result[i][8-max_bit+j]==1:
                 to_print = f'{to_print}{out_dict1[j+1]}'
-            elif result[i][7-max_bit+j]==0:
+            elif result[i][8-max_bit+j]==0:
                 to_print = f'{to_print}{out_dict2[j+1]}'
         if i<len(result)-1:
             to_print = f'{to_print} + '
@@ -166,7 +166,7 @@ if choose=='1':
         if current_bit>max_bit:
             max_bit = current_bit
         for j in range(len(tmp)):
-            total[i].binary[6-j] = tmp[j]
+            total[i].binary[7-j] = tmp[j]
             total[i].ones+=tmp[j]
 
 elif choose=='2':
@@ -205,23 +205,23 @@ elif choose=='3':
     inp = []
     max_bit = 0
     tmp1 = []
-    out_dict1 = {1:"A",2:"B",3:"C",4:"D",5:"E",6:"F",7:"G"}
-    out_dict2 = {"A":1,"B":2,"C":3,"D":4,"E":5,"F":6,"G":7}
+    out_dict1 = {1:"A",2:"B",3:"C",4:"D",5:"E",6:"F",7:"G",8:"H"}
+    out_dict2 = {"A":1,"B":2,"C":3,"D":4,"E":5,"F":6,"G":7,"H":8}
     inp1 = input("请输入组合:").split("+")
     inp1 = list(set(inp1))
     for i in inp1:
         t = list(i)
-        current_bit = 7
+        current_bit = 8
         tmp = []
-        for j in range(7):
-            if out_dict1[7-j] in t:
+        for j in range(8):
+            if out_dict1[8-j] in t:
                 tmp.append(1)
             else:
                 tmp.append(2)
         while "'" in t:
-            tmp[7-out_dict2[t[t.index("'")-1]]] = 0
+            tmp[8-out_dict2[t[t.index("'")-1]]] = 0
             t.pop(t.index("'"))
-        for j in range(7):
+        for j in range(8):
             if tmp[j]==2:
                 current_bit-=1
             else:
