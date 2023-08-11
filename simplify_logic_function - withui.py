@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Aug 27 18:02:25 2022
-
-@author: AiBuZ
-"""
 from itertools import product
 from PyQt5.QtWidgets import QPushButton,QTextEdit,QMainWindow,QDialog,QApplication
 import sqlite3

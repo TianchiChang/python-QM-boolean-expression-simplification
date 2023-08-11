@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Aug 27 18:02:25 2022
-
-@author: RedmiG
-"""
 from itertools import product
 
 class List():
